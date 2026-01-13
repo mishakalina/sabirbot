@@ -21,7 +21,8 @@ namespace SabirBot
                 cancellationToken: cts.Token
             );
             var me = await bot.GetMe();
-            Console.WriteLine($"@{me.Username} started");
+            Console.WriteLine($"@{me.Username} started!");
+            await Task.Delay(Timeout.Infinite);
         }
 
         private static async Task HandleUpdateAsync(
