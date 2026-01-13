@@ -22,7 +22,6 @@ namespace SabirBot
             );
             var me = await bot.GetMe();
             Console.WriteLine($"@{me.Username} started");
-            var me = await bot.GetMe();
         }
 
         private static async Task HandleUpdateAsync(
