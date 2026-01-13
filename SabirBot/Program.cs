@@ -21,8 +21,6 @@ namespace SabirBot
                 cancellationToken: cts.Token
             );
             var me = await bot.GetMe();
-            Console.WriteLine($"@{me.Username} is running... Press Escape to terminate");
-            while (Console.ReadKey(true).Key != ConsoleKey.Escape);
         }
 
         private static async Task HandleUpdateAsync(
