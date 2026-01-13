@@ -1,4 +1,5 @@
-﻿using Telegram.Bot;
+﻿using System.Dynamic;
+using Telegram.Bot;
 using Telegram.Bot.Polling;
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.Enums;
@@ -11,7 +12,7 @@ namespace SabirBot
     {
         private static async Task Main()
         {
-            var token = "8498285887:AAHgImOe2YjM7PaYhU5KSoAP451cxyFChBo";
+            var token = Environment.GetEnvironmentVariable("TG_TOKEN");
             using var cts = new CancellationTokenSource();
             var bot = new TelegramBotClient(token, cancellationToken: cts.Token);
             bot.StartReceiving(
@@ -59,7 +60,7 @@ namespace SabirBot
                 case "/start":
                     var replyKeyboard = new ReplyKeyboardMarkup(new[]
                 {
-                    new KeyboardButton[] { "об авторе", "цены" },
+                    new KeyboardButton[] { "об авторе", "цена" },
                     new KeyboardButton[] { "оплата", "помощь" }
                 })
                     {
@@ -77,7 +78,7 @@ namespace SabirBot
                 case "об авторе":
                     await botClient.SendMessage(
                         message.Chat.Id,
-                        "Бла бла бла, что-то об авторе",
+                        "Докторская степень из твиттера",
                         cancellationToken: token
                     );
                     return;
@@ -93,9 +94,19 @@ namespace SabirBot
 
                 case "/price":
                 case "цены":
+                case "цена":
                     await botClient.SendMessage(
                         message.Chat.Id,
-                        "1 месяц — 300 ₽\n3 месяца — 800 ₽",
+                        "1 месяц — 350 ₽",
+                        cancellationToken: token
+                    );
+                    return;
+
+                case "/pay":
+                case "оплата":
+                    await botClient.SendMessage(
+                        message.Chat.Id,
+                        "По СПБ: 89992152855\r\nПо номеру карты (Т-банк): 2200701039906000",
                         cancellationToken: token
                     );
                     return;
