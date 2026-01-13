@@ -20,6 +20,7 @@ namespace SabirBot
                 HandleErrorAsync,
                 cancellationToken: cts.Token
             );
+            var me = await bot.GetMe();
             Console.WriteLine($"@{me.Username} started");
             var me = await bot.GetMe();
         }
